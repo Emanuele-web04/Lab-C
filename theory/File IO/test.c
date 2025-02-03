@@ -10,7 +10,7 @@ int main() {
     FILE* fh_output;
     fh_output = fopen(filename, "w");
     
-    if ( fh_output ) printf("File: %s opened\n\n", filename);
+    if ( fh_output ) printf("File: %s opened\n", filename);
     else printf("File did not open\n");
     
     // how can i loop a fputs?
@@ -39,7 +39,6 @@ int main() {
 
     printf("\n");
     while ( fgets(buffer, MAX_CHAR, fh_input) ) printf("%s", buffer);
-    printf("\n");
 
     fclose(fh_input);
     return 0;
