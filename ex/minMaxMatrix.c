@@ -85,8 +85,8 @@ void min_max_row_col(int **mat, int R, int C, int *min_R, int *max_C)
     // per le columns abbiamo i % C e sommiamo tutti
     int row_sum = 0;
     int col_sum = 0;
-    int max_sum = -100000000;
-    int min_sum = 100000000;
+    int max_sum = -__INT_MAX__;
+    int min_sum = __INT_MAX__;
     for(int i = 0; i < R; i++)
     {
         for(int j = 0; j < C; j++)
