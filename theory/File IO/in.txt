@@ -1,0 +1,2 @@
+Hello, just writing some text that will be retrieved later with fgets.
+strunz comm iamm?
