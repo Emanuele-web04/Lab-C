@@ -34,7 +34,7 @@ int main()
     int X = 0;
     printf("\nInserisci X da trovare -> ");
     scanf("%d", &X);
-    int i = 0;
+    int i = 1;
     int found_at = linear_search(list, X, i);
 
     found_at == -1 ? printf("Value not found.\n") : printf("X: %d found @ pos: %d\n", X, found_at);
@@ -82,7 +82,7 @@ int linear_search(Node *head, int X, int i)
 
     if ( X == head -> ele ) return i;
 
-    return linear_search(head -> next, X, i++);
+    return linear_search(head -> next, X, ++i);
 }
 
 void free_list(Node *head)
