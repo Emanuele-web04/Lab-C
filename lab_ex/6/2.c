@@ -55,9 +55,10 @@ void display_image(Colors **mat, int N)
 {
     for (int i = 0; i < N; i++)
     {
+        printf("\n");
         for (int j = 0; j < N; j++)
             printf("(%d, %d, %d)\t", mat[i][j].red, mat[i][j].green, mat[i][j].blue);
-        printf("\n\n");
+        printf("\n");
     }
 }
 
