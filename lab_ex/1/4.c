@@ -27,6 +27,7 @@ struct Giocatore {
 
 Coordinate *lancio_boccino();
 int distance(Coordinate *giocatore, Coordinate *boccino);
+void lancia(Coordinate *lancio);
 void game(Giocatore *giocatore_1, Giocatore *giocatore_2);
 
 int main()
@@ -62,6 +63,12 @@ int distance(Coordinate *giocatore, Coordinate *boccino)
     return dis;
 }
 
+void lancia(Coordinate *lancio)
+{
+    lancio -> X = rand() % 100;
+    lancio -> Y = rand() % 100;
+}
+
 void game(Giocatore *giocatore_1, Giocatore *giocatore_2)
 {
     int dis_1 = 0, dis_2 = 0;
@@ -74,16 +81,14 @@ void game(Giocatore *giocatore_1, Giocatore *giocatore_2)
             if ( i % 2 == 0 ) 
             {
                 giocatore_1 -> lancio = malloc(sizeof(Coordinate));
-                giocatore_1 -> lancio -> X = rand() % 100;
-                giocatore_1 -> lancio -> Y = rand() % 100;
+                lancia(giocatore_1 -> lancio);
                 dis_1 = distance(giocatore_1 -> lancio, boccino);
-                printf("Distance 1: %d\n", dis_1);
+                printf("Distance 1: %d\n\n", dis_1);
                 free(giocatore_1 -> lancio);
             } else
             {
                 giocatore_2 -> lancio = malloc(sizeof(Coordinate));
-                giocatore_2 -> lancio -> X = rand() % 100;
-                giocatore_2 -> lancio -> Y = rand() % 100;
+                lancia(giocatore_2 -> lancio);
                 dis_2 = distance(giocatore_2 -> lancio, boccino);
                 printf("Distance 2: %d\n", dis_2);
                 free(giocatore_2 -> lancio);
@@ -91,8 +96,10 @@ void game(Giocatore *giocatore_1, Giocatore *giocatore_2)
         }
         if (dis_1 < dis_2) giocatore_1 -> points += 1;
         else giocatore_2 -> points += 1;
-            dis_1 = 0;
-            dis_2 = 0;
+        printf("Giocatore 1: %d\n", giocatore_1 -> points);
+        printf("Giocatore 2: %d\n\n", giocatore_2 -> points);
+        dis_1 = 0;
+        dis_2 = 0;
          free(boccino);
     }
 }
