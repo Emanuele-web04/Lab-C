@@ -38,7 +38,7 @@ int main()
     Giocatore *giocatore_1 = malloc(sizeof(Giocatore));
     Giocatore *giocatore_2 = malloc(sizeof(Giocatore));
     game(giocatore_1, giocatore_2);
-    printf("Giocatore %d vince la manche\n", (giocatore_1 -> points > giocatore_2 -> points) ? 1 : 2);
+    printf("Giocatore %d vince la partita\n", (giocatore_1 -> points > giocatore_2 -> points) ? 1 : 2);
 
     free(giocatore_1);
     free(giocatore_2);
@@ -83,14 +83,14 @@ void game(Giocatore *giocatore_1, Giocatore *giocatore_2)
                 giocatore_1 -> lancio = malloc(sizeof(Coordinate));
                 lancia(giocatore_1 -> lancio);
                 dis_1 = distance(giocatore_1 -> lancio, boccino);
-                printf("Distance 1: %d\n\n", dis_1);
+                printf("Distance 1: %d\n", dis_1);
                 free(giocatore_1 -> lancio);
             } else
             {
                 giocatore_2 -> lancio = malloc(sizeof(Coordinate));
                 lancia(giocatore_2 -> lancio);
                 dis_2 = distance(giocatore_2 -> lancio, boccino);
-                printf("Distance 2: %d\n", dis_2);
+                printf("Distance 2: %d\n\n", dis_2);
                 free(giocatore_2 -> lancio);
             }
         }
