@@ -22,9 +22,9 @@ int main()
     Employee e;
     Employee max;
     max.salary = 0;
-    while( fscanf(file, "%[ˆ\n] %d %d", e.name, &e.id, &e.salary) == 3 )
+    while( fscanf(file, "%[^\n] %d %d", e.name, &e.id, &e.salary) == 3 )
     {
-        fgetc(file);
+       //fgetc(file);
         if ( max.salary < e.salary ) max = e;
     }
 

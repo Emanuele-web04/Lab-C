@@ -31,8 +31,13 @@ int main()
     FILE * fptr;
     fptr = fopen("people.txt", "r");
     char buffer[256];
+    char c;
     while( fgets(buffer, 256, fptr) ) printf("%s", buffer);
-
+    while( !feof(fptr) )
+    {
+        c = fgetc(fptr);
+        printf("%c", c);
+    }
     fclose(fptr);
     free(people);
     return 0;
