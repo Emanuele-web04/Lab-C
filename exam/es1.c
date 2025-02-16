@@ -9,6 +9,7 @@
 
 float *populate_array(int N);
 void check_dividend(float *v, int N);
+
 int main()
 {       
     int N = 0;
@@ -24,6 +25,7 @@ int main()
     return 0;
 }
 
+// funzione per allocare dinamicamente l array
 float *populate_array(int N)
 {   
     float *arr = malloc(sizeof(float) * N);
@@ -47,12 +49,22 @@ void check_dividend(float *v, int N)
         {
             // devo fare il check con l indice diverso
             // perche cosi non vado a prendere lo stesso
+            // possiamo farlo o cosi
             if (i != j)
             {
+                // dato che il modulo per i float non worka
+                // checkiamo se la divisione in intero * v[j] == v[i]
+                // ex 7 / 2 = 3.5 -> int = 3 * 2 = 6 != 7
+                // 6 / 2 = 3.0 -> int = 3 * 2 = 6 -> é un divisore
                 float division = v[i] / v[j];
                 if ((int)division * v[j] == v[i])
                     printf("%.2f é divisore di %.2f\n", v[j], v[i]);
             }
+
+            // o cosi
+            // if ( i == j )
+            //     continue;
+            // e sotto la logica
         }
     }
 }

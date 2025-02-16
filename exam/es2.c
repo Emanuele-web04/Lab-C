@@ -62,19 +62,28 @@ void find_is_local_max(int **mat, int N)
     {
         for (int j = 0; j < N; j++)
         {
+            // presupponiamo che la cella sia un massimo locale
             is_local_max = 1;
+            // la cornice va da -1 a 1 per le row
             for (int row_offset = -1; row_offset <= 1; row_offset++)
             {
+                // da -1 a 1 per le column
                 for(int col_offset = -1; col_offset <= 1; col_offset++)
                 {
+                    // se la cella é la stessa, salta questo valore
                     if (row_offset == 0 && col_offset == 0)
                         continue;
 
+                    // la cella dove sto ora é data da i/j + offset
                     int row_cell = i + row_offset;
                     int col_cell = j + col_offset;
 
+                    // se sto nel range e se esistono valori entro
                     if (row_cell >= 0 && row_cell < N && col_cell >= 0 && col_cell < N)
                     {
+                        // se la cella adiacente é maggiore della cella stessa
+                        // quella cella non é un massimo locale, settiamo la var a 0 -> false
+                        // e usciamo dal ciclo
                         if (mat[row_cell][col_cell] >= mat[i][j])
                         {
                             is_local_max = 0;
@@ -82,9 +91,11 @@ void find_is_local_max(int **mat, int N)
                         }
                     }
                 }
+                // se la var é 0 usciamo dal ciclo ancora una volta
                 if ( is_local_max == 0 )
                     break;
             }
+            // se abbiamo a finale un massimo locale lo printiamo
             if (is_local_max == 1)
                     printf("Local Max -> %d found @: (%d, %d)\n", mat[i][j], i, j);
         }

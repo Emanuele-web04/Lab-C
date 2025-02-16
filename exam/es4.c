@@ -40,16 +40,23 @@ int main()
 
             // mi fetcho il runner di ora
             int runner_idx = teams[t].curr_runner_idx;
+            // e lo salvo in un runner con l indice del corridore corrente
             Runner *runner = &teams[t].runner[runner_idx];
 
-            int vel_distance = rand() % (MAX_RANGE - MIN_RANGE + 1) + MIN_RANGE;
-            runner -> distance += vel_distance;
+            // se la vuole invece randomica ogni ciclo allora creo la rand qui
+            // ma io lho fatta cosi per semplificare
+            runner -> distance += runner -> vel;
 
+            // se la distanza eccede i 100m
             if ( runner -> distance >= SPRINT )
             {
+                // la distanza mi diventa 100
                 runner -> distance = SPRINT;
+                // e passo avanti col corridore del team
                 teams[t].curr_runner_idx += 1;
 
+                // se l indice del corridore é >= di 4
+                // il team t ha finito la corsa
                 if (teams[t].curr_runner_idx >= 4) 
                 {
                     teams[t].finished = 1;
@@ -58,12 +65,15 @@ int main()
             }
         }
 
-        int finished_count = 0;
+        int finished_count = 0;c
+        // controllo quali team hanno finito
         for (int t = 0; t < TEAMS; t++)
             if ( teams[t].finished )
                 finished_count += 1;
         
+        // controllo se tutti i team hanno finito
         if ( finished_count == TEAMS )
+        // concludi gara
             is_race_finished = 1;
     }
 
@@ -83,6 +93,8 @@ Team *create_teams()
 
         for (int r = 0; i < r; r++)
         {
+            // dato che la distanza non puo superare i 15 metri 
+            // faccio tra 1 e 15
             teams[i].runner[r].vel = rand() % (MAX_RANGE - MIN_RANGE + 1) + MIN_RANGE;
             teams[i].runner[r].distance = 0;
         }
